@@ -54,6 +54,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(state);
     });
     on<AuthEventRegister>((event, emit) async {
+      emit(
+        const AuthStateLoggedOut(
+          exception: null,
+          isLoading: true,
+          loadingText: 'Please wait while your account is being setup',
+        ),
+      );
       final email = event.email;
       final password = event.password;
       try {
