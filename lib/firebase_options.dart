@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -49,18 +50,18 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD7nkeqRVmca5ZfrdTTIE24FjQsk7jTyos',
-    appId: '1:1023946398703:android:b2ddc944195fd3bf35341a',
-    messagingSenderId: '1023946398703',
+  static FirebaseOptions android = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_ANDROID_API_KEY'] ?? '',
+    appId: dotenv.env['FIREBASE_ANDROID_APP_ID'] ?? '',
+    messagingSenderId: dotenv.env['FIREBASE_ANDROID_MESSAGE_SENDER_ID'] ?? '',
     projectId: 'mynotes-flutter-app-km',
     storageBucket: 'mynotes-flutter-app-km.appspot.com',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC8DIH0TKgU_ti5O9JyKI88u93jQG8dEYA',
-    appId: '1:1023946398703:ios:c4123c9b9060820535341a',
-    messagingSenderId: '1023946398703',
+  static FirebaseOptions ios = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_IOS_API_KEY'] ?? '',
+    appId: dotenv.env['FIREBASE_IOS_APP_ID'] ?? '',
+    messagingSenderId: dotenv.env['FIREBASE_IOS_MESSAGE_SENDER_ID'] ?? '',
     projectId: 'mynotes-flutter-app-km',
     storageBucket: 'mynotes-flutter-app-km.appspot.com',
     iosBundleId: 'com.krish.mynotes',
